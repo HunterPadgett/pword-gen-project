@@ -9,12 +9,9 @@ var specChar = ["!", "@", "#", "$", "%", "^", "&", "*", "[", "}", "{", "`", "~",
 var lowerCase = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
 var upperCase = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
 var numbersPw = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
-var charOptions = []
+//array to store all possible  characters in
+var charOptions = [];
 
-
-
-//validate the input
-//generate password based on citeria 
 
 
 function generatePassword() {
@@ -22,13 +19,14 @@ function generatePassword() {
     //promt user for password criteria 
     //pass length between 8 - 128
   var lengthPrompt = prompt("Please enter a number between 8 - 128 to generate your password."); 
-    if (!(lengthPrompt >= 8 && lengthPrompt <= 128)) {
+    if (lengthPrompt < 8 || lengthPrompt > 128) {
       alert("Invalid entry. Please enter a number between 8 and 128.");
       generatePassword();
     }
 
 
-    //confirm lowercase, uppercase, numbers, spec char 
+    //confirm lowercase, uppercase, numbers, spec char prompts 
+    //with if statments to store the char if the user wants to include them
   var lowers = confirm("Click OK if you would like lowercase letters in your password?");
 
   if (lowers) {
@@ -57,6 +55,8 @@ function generatePassword() {
 
   }
 
+  //validate the input
+  //generate password based on citeria 
   var passLength = '';
   for (var i = 0; i < lengthPrompt; i++) {
     passLength += charOptions[Math.floor(Math.random() * charOptions.length)];
